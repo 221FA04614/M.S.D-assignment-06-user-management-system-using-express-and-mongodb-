@@ -1,0 +1,245 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  overflow: hidden;
+  background: url("https://getwallpapers.com/wallpaper/full/3/1/3/295217.jpg") no-repeat center;
+  background-size: cover;
+  color: #e0e0e0;
+  font-size: 18px;
+}
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: rgba(50, 50, 50, 0.85); /* Dark transparent overlay */
+}
+
+section .color {
+  position: absolute;
+  filter: blur(150px);
+}
+
+section .color:nth-child(1) {
+  top: -350px;
+  width: 600px;
+  height: 600px;
+  background: #333; /* Dark gray */
+}
+
+section .color:nth-child(2) {
+  bottom: -150px;
+  width: 600px;
+  height: 600px;
+  background: #444; /* Slightly lighter gray */
+}
+
+section .color:nth-child(3) {
+  bottom: 50px;
+  width: 300px;
+  height: 300px;
+  background: #555; /* Even lighter gray */
+}
+
+.box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box .square {
+  position: absolute;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 25px 45px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  animation: animate 10s linear infinite;
+  animation-delay: calc(-1s * var(--i));
+}
+
+@keyframes animate {
+  0%, 100% {
+    transform: translateY(-40px);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+}
+
+.wrapper {
+  position: relative;
+  width: 400px;
+  height: 500px;
+  background: rgba(20, 20, 20, 0.8);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 20px;
+  padding: 40px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: 1s ease-in-out;
+}
+
+.wrapper.active .form-wrapper.sign-in {
+  transform: translateY(-450px);
+}
+
+.wrapper .form-wrapper.sign-up {
+  position: absolute;
+  top: 450px;
+  left: 0;
+}
+
+.wrapper.active .form-wrapper.sign-up {
+  transform: translateY(-450px);
+}
+
+h2 {
+  font-size: 30px;
+  color: #fff;
+  text-align: center;
+}
+
+.input-group {
+  position: relative;
+  margin: 30px 0;
+  border-bottom: 2px solid #fff;
+}
+
+.input-group label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  transform: translateY(-50%);
+  font-size: 16px;
+  color: #e0e0e0; /* Lighter gray for contrast */
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.input-group input {
+  width: 320px;
+  height: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 0 5px;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.input-group input:focus ~ label,
+.input-group input:valid ~ label {
+  top: -5px;
+}
+
+.remember {
+  margin: -5px 0 15px 5px;
+}
+
+.remember label {
+  color: #e0e0e0;
+  font-size: 14px;
+}
+
+.remember label input {
+  accent-color: #0ef;
+}
+
+button {
+  position: relative;
+  width: 100%;
+  height: 40px;
+  background: #0ef;
+  box-shadow: 0 0 10px #0ef;
+  font-size: 16px;
+  color: #000;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background-color: #0cdbf5;
+}
+
+.signUp-link {
+  font-size: 14px;
+  text-align: center;
+  margin: 15px 0;
+}
+
+.signUp-link p {
+  color: #fff;
+}
+
+.signUp-link p a {
+  color: #0ef;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.signUp-link p a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  background-color: rgba(20, 20, 20, 0.9); /* Darker background for better contrast */
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  max-width: 400px;
+  width: 100%;
+}
+
+h1 {
+  font-size: 36px;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 18px;
+  color: #e0e0e0; /* Lighter text for contrast */
+  margin-bottom: 30px;
+}
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #000;
+  background: #0ef;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 10px #0ef;
+  transition: background 0.3s ease;
+}
+
+.button:hover {
+  background-color: #0cdbf5;
+}

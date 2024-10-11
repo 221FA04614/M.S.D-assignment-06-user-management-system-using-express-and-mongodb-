@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="welcome.css">
+    <title>Welcome</title>
+</head>
+<body>
+    <h1 id="greeting"></h1>     
+    
+    <div class="dashboard">
+        <button class="dashboard-item" id="dashboard-button">
+            <img src="download.png" alt="Dashboard Icon" class="icon">
+            <p>Dashboard</p>
+        </button>
+       
+        
+    </div>
+
+    <!-- Modal for displaying login credentials -->
+    <div id="credentialModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Login Credentials</h2>
+            <table id="credentials-table">
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody id="credentials"></tbody> <!-- Credentials will be displayed here -->
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const name = urlParams.get('name');
+        document.getElementById('greeting').innerText = `Welcome, ${name}`;
+
+        document.getElementById('dashboard-button').addEventListener('click', async () => {
+            try {
+                const response = await fetch("http://localhost:3000/users");
+                if (!response.ok) throw new Error('Network response was not ok');
+
+                const users = await response.json();
+                const credentialsTbody = document.getElementById('credentials');
+                credentialsTbody.innerHTML = ''; // Clear previous content
+
+                users.forEach(user => {
+                    credentialsTbody.innerHTML += `<tr><td>${user.username}</td><td>${user.password}</td></tr>`;
+                });
+
+                showCredentials();
+            } catch (error) {
+                console.error('Error:', error);
+                alert(`An error occurred: ${error.message}`);
+            }
+        });
+
+        function showCredentials() {
+            document.getElementById('credentialModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('credentialModal').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
